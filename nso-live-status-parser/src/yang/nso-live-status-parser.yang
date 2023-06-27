@@ -1,0 +1,45 @@
+module nso-live-status-parser {
+  namespace "http://com/cisco/nso-live-status-parser";
+  prefix nso-live-status-parser;
+
+  import ietf-inet-types {
+    prefix inet;
+  }
+  import tailf-common {
+    prefix tailf;
+  }
+  import tailf-ncs {
+    prefix ncs;
+  }
+
+  description
+    "Bla bla...";
+
+  revision 2016-01-01 {
+    description
+      "Initial revision.";
+  }
+  container execute-live-status-action {
+    tailf:action execute-live-status-action {
+    tailf:actionpoint execute-live-status-action;
+    input {    
+        leaf device {
+              type leafref {
+                path "/ncs:devices/ncs:device/ncs:name";
+              }
+            }
+        leaf command {
+          type string;
+        }
+    }
+    output {
+        leaf success {
+            type boolean;
+        }
+        leaf message {
+          type string;
+        }
+      }
+    }
+  }
+}
